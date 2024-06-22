@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>四附小2018级1班毕业网站</title>
+    <!-- 1：引入基础样式文件 mui-player.min.css -->
+    <link rel="stylesheet" href="muiplayer/release/mui-player/dist/mui-player.min.css">
+
+
+</head>
+<body>
+
+<!-- 指定播放器容器 -->
+<div id="mui-player"></div>
+
+
+<!-- 2：引入基础脚本 mui-player.min.js -->
+<script src="muiplayer/release/mui-player/dist/mui-player.min.js"></script>
+<!-- 5:引入PC端扩展脚本 -->
+<script src="muiplayer/release/mui-player-desktop-plugin/dist/mui-player-desktop-plugin.min.js"></script>
+<script>
+    // 4：初始化 MuiPlayer 插件，MuiPlayer 方法传递一个对象，该对象包括所有插件的配置
+    let mp = new MuiPlayer({
+        container:'#mui-player', //视频播放器的容器
+        title:'福州四附小2018级1班毕业微电影', //视频播放器的容器上的标题
+        src:'./video/四附小2018级1班毕业电影.mp4', //被播放视频的文件地址路径
+        width: 1845, //视频播放器的宽度
+        height: 500, //视频播放器的高度
+        autoplay: true, //是否开启自动播放
+        volume: 1, //视频播放器初始音量（0-1）
+        themeColor:'#07fe72', //视频播放器的主题颜色
+        //扩展插件
+        plugins:[
+            //PC端扩展插件
+            new MuiPlayerDesktopPlugin({
+                //进入全屏后放大控件的比例
+                fullScaling: 1.2,
+                //光标移出播放器是否隐藏控件
+                leaveHiddenControls: true,
+                //自定义设置组
+                customSetting:[
+                    {
+                        functions: '清晰度', //插件组功能名
+                        name: 'clarity', //插件组的名称
+                        model: 'select', //插件功能的选择方式
+                        show: true,
+                        zIndex: 0,
+                        childConfig: [
+                            {functions: '1080p 超清', selected: true},
+                            {functions: '720p 高清'},
+                            {functions: '480p 清晰'},
+                            {functions: '360p 流畅'}
+                        ],
+                        onToggle: (data,selected,back) => {
+                            console.log(data)
+                            selected()
+                            back(0)
+                        }}],
+                //自定义右键菜单栏
+                contextmenu: [
+                            {
+                                name: 'muiplayer',
+                                show: true
+                            },
+                            {
+                                name:'Copy Video URL',
+                                context: '复制视频链接',
+                                zIndex: -1,
+                                click: close => {
+
+                                    //将视频链接复制到剪贴板
+                                    navigator.clipboard.writeText(mp.video().currentSrc)
+                                        .then(()=>{
+                                            mp.showToast({
+                                                message: '视频链接复制成功', //消息内容
+                                                duration: 2000, //显示时间
+                                                style: {
+                                                    fontSize: '12px',
+                                                    color: '#000000',
+                                                    backgroundColor:'rgba(152,246,255)'
+                                                }
+                                            })
+                                        })
+                                    close() //关闭右键菜单栏
+                                }
+                            }
+                        ]
+
+
+
+            })
+        ]
+    })
+</script>
+</body>
+</html>
