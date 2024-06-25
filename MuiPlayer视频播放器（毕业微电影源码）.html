@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cn">
 <head>
     <meta charset="UTF-8">
     <title>四附小2018级1班毕业网站</title>
@@ -24,8 +24,8 @@
         container:'#mui-player', //视频播放器的容器
         title:'福州四附小2018级1班毕业微电影', //视频播放器的容器上的标题
         src:'./video/四附小2018级1班毕业电影.mp4', //被播放视频的文件地址路径
-        width: 1845, //视频播放器的宽度
-        height: 500, //视频播放器的高度
+        width: 800, //视频播放器的宽度(全屏1845)
+        height: 500, //视频播放器的高度(全屏500)
         autoplay: true, //是否开启自动播放
         volume: 1, //视频播放器初始音量（0-1）
         themeColor:'#07fe72', //视频播放器的主题颜色
@@ -84,7 +84,44 @@
                                     close() //关闭右键菜单栏
                                 }
                             }
-                        ]
+                        ],
+                //缩略图
+                thumbnails: {
+                    tile: [10,10], //指定缩略图排列方式
+                    scale: [160,90], //指定视频缩略片段图的放映尺寸
+                    //视频缩略片段图的列表
+                    preview: [
+                        './picture/output.mp4001.jpg',
+                        './picture/output.mp4002.jpg',
+                        './picture/output.mp4003.jpg',
+                        './picture/output.mp4004.jpg',
+                        './picture/output.mp4005.jpg',
+                        './picture/output.mp4006.jpg',
+                        './picture/output.mp4007.jpg',
+                        './picture/output.mp4008.jpg',
+                        './picture/output.mp4009.jpg',
+                        './picture/output.mp4010.jpg',
+                        './picture/output.mp4011.jpg',
+                        './picture/output.mp4012.jpg',
+                        './picture/output.mp4013.jpg',
+                        './picture/output.mp4014.jpg',
+                        './picture/output.mp4015.jpg',
+                        './picture/output.mp4016.jpg',
+                        './picture/output.mp4017.jpg',
+                        './picture/output.mp4018.jpg',
+                        './picture/output.mp4019.jpg',
+                        './picture/output.mp4020.jpg',
+                        './picture/output.mp4021.jpg',
+                        './picture/output.mp4022.jpg',
+                        './picture/output.mp4023.jpg',
+                        './picture/output.mp4024.jpg',
+                        './picture/output.mp4025.jpg',
+                        './picture/output.mp4026.jpg',
+                        './picture/output.mp4027.jpg',
+                        './picture/output.mp4028.jpg',
+                    ], //缩略图配置列表，接受可由多张按照顺序排列的缩略图片的资源地址
+
+                }
 
 
 
